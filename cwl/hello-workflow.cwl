@@ -1,7 +1,7 @@
 cwlVersion: v1.0
 class: Workflow
-id: cosifer_workflow
-label: cosifer-workflow
+id: hello_workflow
+label: hello-workflow
 
 inputs:
   an_input: {type: File, doc: "Input file to compute the MD5"}
