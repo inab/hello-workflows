@@ -1,0 +1,28 @@
+# Include config file
+configfile: "config.yaml"
+
+# Finish rule collecting all desired output.
+rule finish:
+    input:
+        os.path.join(config['output_dir'],"hello_output.txt")
+
+rule hello_world:
+    input:
+        config['an_input']
+    output:
+        os.path.join(config['output_dir'],"hello_output.txt")
+    log:
+        os.path.join(config['output_dir'],"output.log")
+    container: 
+        "docker://ubuntu:22.04"
+    shell:
+        """
+        exec > {log} 2>&1
+        echo "Hello world!!!!!!!" > {output} 
+        echo
+        echo "Computing the md5 of {input}" 
+        md5sum {input} 
+        echo
+        echo "Showing the inherited environment"
+        env
+        """
