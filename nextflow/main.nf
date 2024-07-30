@@ -16,7 +16,7 @@ process hello {
     publishDir "${destdir}", saveAs: { filename -> (destsubdir!='' ? "${destsubdir}/" : '') + filename.minus('resdir/') }
 
     input:
-	tuple an_input, destdir, val(destsubdir) from hello_input
+	tuple path(an_input), path(destdir), val(destsubdir) from hello_input
 
     output:
 	path "resdir/**" into hello_output
