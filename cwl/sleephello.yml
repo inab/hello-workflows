@@ -1,0 +1,4 @@
+an_input:
+  class: File
+  path: /etc/passwd
+sleep_time: 10
