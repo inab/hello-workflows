@@ -5,10 +5,10 @@ label: sleephello
 
 requirements:
   - class: DockerRequirement
-    dockerPull: 'bash:5.2.15'
+    dockerPull: 'busybox:1.36.1-musl'
   - class: InitialWorkDirRequirement
     listing:
-      - entryname: sleephello-world.bash
+      - entryname: sleephello-world.sh
         entry: |-
           echo "Hello world!!!!!!!"
           echo
@@ -22,7 +22,7 @@ requirements:
           sleep $(inputs.sleep_time)
           date -Is
 
-baseCommand: ["bash", "sleephello-world.bash"]
+baseCommand: ["sh", "sleephello-world.sh"]
 
 inputs:
   an_input:
