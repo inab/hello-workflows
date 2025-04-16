@@ -9,7 +9,7 @@ outdir = file(params.output_dir)
 
 process hello {
     publishDir "${outdir}", saveAs: { filename -> (destsubdir!='' ? "${destsubdir}/" : '') + filename.minus('resdir/') }
-    container "ubuntu:22.04"
+    container "python:3.12-slim"
 
     input:
 	tuple path(an_input), val(destsubdir)
@@ -20,6 +20,7 @@ process hello {
 
     shell:
     """
+    hello_script.py
     mkdir -p "resdir/${destsubdir}"
     exec > "resdir/${destsubdir}"/hello_output.txt 2>&1
     echo "Hello world!!!!!!!"
